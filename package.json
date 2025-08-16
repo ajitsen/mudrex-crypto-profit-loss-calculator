@@ -1,0 +1,32 @@
+{
+  "name": "mudrex-crypto-profit-loss-calculator",
+  "version": "1.0.0",
+  "description": "A tool for generating income reports from the transfer of Virtual Digital Assets (VDA) for Mudrex users.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "keywords": [
+    "crypto",
+    "profit",
+    "loss",
+    "calculator",
+    "mudrex",
+    "VDA"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mudrex-crypto-profit-loss-calculator.git"
+  },
+  "homepage": "https://github.com/yourusername/mudrex-crypto-profit-loss-calculator#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/mudrex-crypto-profit-loss-calculator/issues"
+  }
+}

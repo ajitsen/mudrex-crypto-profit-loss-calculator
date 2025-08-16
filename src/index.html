@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudrex Crypto Profit/Loss Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mudrex Crypto Profit/Loss Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Input Parameters</h2>
+            <label for="usdInrRate">USD to INR Rate:</label>
+            <input type="number" id="usdInrRate" placeholder="e.g. 87.00" value="87">
+            
+            <label for="cutoffDate">Start Date of Sell TXN (for FY):</label>
+            <input type="date" id="cutoffDate" value="2024-04-01">
+            
+            <label for="fileInput">Select Crypto Transactions TSV File:</label>
+            <input type="file" id="fileInput" accept=".tsv">
+            
+            <button id="generateBtn">Generate Report</button>
+        </section>
+        <section id="outputSection">
+            <h2>Profit/Loss Output</h2>
+            <div id="output"></div>
+            <button id="downloadBtn" disabled>Download Report</button>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
