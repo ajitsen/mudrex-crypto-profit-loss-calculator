@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Crypto Profit/Loss Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        input[type="file"] { margin-bottom: 1em; }
+        #output { margin-top: 2em; }
+        table { border-collapse: collapse; margin-top: 1em; }
+        th, td { border: 1px solid #ccc; padding: 0.5em; }
+        th { background: #eee; }
+        .btn { 
+            margin-bottom: 1em; 
+            padding: 0.5em 1em; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            transition: background 0.2s;
+        }
+        .btn:disabled {
+            background: #888 !important;
+            color: #eee !important;
+            cursor: not-allowed !important;
+        }
+        .tick-animate {
+            opacity: 0;
+            transition: opacity 3s;
+        }
+        .tick-animate.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Crypto Profit/Loss Calculator</h1>
+    <section style="background:#f9f9f9; border:1px solid #eee; padding:1em; margin-bottom:2em; max-width:700px;">
+        <b>About this Tool</b>
+        <ul>
+            <li>This calculator is a <b>client-side tool</b> – all calculations are performed in your browser. <b>Your data is never sent to any server</b> and remains private on your device.</li>
+            <li>It helps you generate a <b>Virtual Digital Asset (VDA) Profit CSV</b> for use while filing Income Tax returns in India.</li>
+            <li>The tool uses the <b>FIFO (First-In-First-Out)</b> method for matching buy and sell transactions.</li>
+            <li><b>Input Format:</b> This tool assumes your transaction file is in the format provided by the transaction report of <b>Mudrex</b>.</li>
+            <li>This tool is provided <b>without any warranty</b>. Please <b>consult your tax advisor</b> before using the results for official filings.</li>
+        </ul>
+        <div style="margin-top:1em;">
+            <b>Sample Input File:</b>
+            <a href="sample.tsv" download="sample.tsv" style="margin-left:0.5em;">Download sample.tsv</a>
+            <pre style="background:#f4f4f4; border:1px solid #ddd; padding:0.5em; overflow-x:auto; font-size:0.95em; margin-top:0.5em;">
+Investment Product	Date (IST)	Coin Name	Symbol	Transaction Type	Coin Quantity	Amount (USDT)
+Coins	April 22, 2024 12:09	Bitcoin	BTC	SELL	0.00280182	184.8879135
+Coins	April 18, 2024 20:07	Bitcoin	BTC	TAKEPROFIT	0.00309362	196.9549478
+Coins	April 17, 2024 20:51	Bitcoin	BTC	BUY	0.0042783	261.1803519
+Coins	April 1, 2024 23:00	Bitcoin	BTC	BUY	0.00060947	10.2819237
+Coins	March 20, 2024 23:00	Bitcoin	BTC	BUY	0.001	100.2819237
+            </pre>
+        </div>
+    </section>
+    <details open>
+      <summary><b>Input Parameters</b></summary>
+      <div style="margin-bottom:2em; border:1px solid #eee; padding:1em; max-width:400px;">
+          <div style="margin-bottom:1em;">
+              <label for="usdInrRate"><b>USD to INR Rate:</b></label><br>
+              <input type="number" id="usdInrRate" step="0.0001" placeholder="e.g. 87.00" style="width:100%;" value="87">
+          </div>
+          <div style="margin-bottom:1em;">
+              <label for="cutoffDate"><b>Start Date of Sell TXN (for FY):</b></label><br>
+              <input type="date" id="cutoffDate" style="width:100%;" value="2024-04-01">
+          </div>
+          <div style="margin-bottom:1em;">
+              <label for="fileInput"><b>Select Crypto Transactions TSV File:</b></label><br>
+              <input type="file" id="fileInput" class="btn" accept=".tsv">
+          </div>
+          <div id="generateLabel"></div>
+      </div>
+    </details>
+    <details>
+      <summary><b>Sorted Transactions</b> <span class="tick tick-animate"></span></summary>
+      <div id="sorted"></div>
+      <button id="sortedDownloadBtn" class="btn" disabled>Download Sorted Transaction CSV</button>
+    </details>
+    <br/>
+    <details>
+      <summary><b>Profit/Loss Output</b> <span class="tick tick-animate"></span></summary>
+      <div id="profitLossSubheading" style="margin:0.5em 0 1em 0; font-weight:bold; color:#333;"></div>
+      <div id="output"></div>   
+      <button id="vdaDownloadBtn" class="btn" disabled>Download Virtual Digital Assets Profit CSV</button>
+    </details>
+    <script src="app.js"></script>
+</body>
+</html>
